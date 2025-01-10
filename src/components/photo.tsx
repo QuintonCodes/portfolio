@@ -10,7 +10,7 @@ const Photo = () => {
         initial={{ opacity: 0 }}
         animate={{
           opacity: 1,
-          transition: { duration: 0.4, ease: "easeIn" },
+          transition: { delay: 2.4, duration: 0.4, ease: "easeIn" },
         }}
         className="w-[298px] h-[298px] xl:w-[490px] xl:h-[490px] relative"
       >
