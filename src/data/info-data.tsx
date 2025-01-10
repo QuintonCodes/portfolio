@@ -57,7 +57,7 @@ export const socialsData = [
     icon: <FaLinkedinIn />,
     path: "https://www.linkedin.com/in/kagiso-jiyane",
   },
-  { icon: <FaTwitter />, path: "https://x.com/insom1ac1" },
+  { icon: <FaTwitter />, path: "https://x.com/quinton_dev" },
 ];
 
 // Resume Page
