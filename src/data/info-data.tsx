@@ -47,7 +47,7 @@ export const heroData = {
   subtitle: "Kagiso Jiyane",
   description:
     "I excel at crafting elegant digital experiences and I am proficient in various programming languages and technologies.",
-  role: "Software Engineer",
+  role: "Junior Software Engineer",
 };
 
 export const socialsData = [
@@ -91,12 +91,12 @@ export const educationData = [
   {
     institution: "Eduvos",
     degree: "Bachelor's Degree in IT (Software Engineering)",
-    duration: "2023 - present",
+    duration: "02/2023 - present",
   },
   {
     institution: "Hoerskool Pretoria Wes",
-    degree: "Highschool",
-    duration: "2018 - 2022",
+    degree: "Bachelor's Pass in Highschool",
+    duration: "01/2018 - 12/2022",
   },
 ];
 
@@ -106,7 +106,7 @@ export const aboutData = {
   info: [
     { fieldName: "Name", fieldValue: "Kagiso Jiyane" },
     { fieldName: "Phone", fieldValue: "(+27) 69 787 4817" },
-    { fieldName: "Experience", fieldValue: "1 Year" },
+    { fieldName: "Work Experience", fieldValue: "1 Year" },
     { fieldName: "Nationality", fieldValue: "South African" },
     { fieldName: "Email", fieldValue: "kagisojiyane28@gmail.com" },
     { fieldName: "Freelance", fieldValue: "Available" },
@@ -139,7 +139,8 @@ export const projectsData = [
     num: "01",
     category: "fullstack",
     title: "kickFlip e-commerce website",
-    description: "An E-Commerce website for a clothing store",
+    description:
+      "E-Commerce clothing store website for a street brand named KickFlip",
     stack: [
       {
         name: "React",
@@ -162,7 +163,8 @@ export const projectsData = [
     num: "02",
     category: "frontend",
     title: "spotify api website",
-    description: "A website using spotify's APIs",
+    description:
+      "A website using spotify's APIs to provide users with customized music",
     stack: [
       {
         name: "Next.js",
