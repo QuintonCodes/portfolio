@@ -83,7 +83,7 @@ export const experienceData = [
   {
     company: "San Carlo",
     position: "Private Tutor",
-    duration: "01-2024 - 11-2024",
+    duration: "01/2024 - 11/2024",
   },
 ];
 
