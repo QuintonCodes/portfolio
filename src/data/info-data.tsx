@@ -5,7 +5,6 @@ import {
   FaGit,
   FaGithub,
   FaHtml5,
-  FaInstagram,
   FaJs,
   FaLinkedinIn,
   FaMapMarkerAlt,
@@ -13,6 +12,7 @@ import {
   FaPhoneAlt,
   FaPython,
   FaReact,
+  FaStackOverflow,
   FaTwitter,
 } from "react-icons/fa";
 import { SiNextdotjs, SiTailwindcss, SiTypescript } from "react-icons/si";
@@ -52,7 +52,10 @@ export const heroData = {
 
 export const socialsData = [
   { icon: <FaGithub />, path: "https://github.com/QuintonCodes" },
-  { icon: <FaInstagram />, path: "https://www.instagram.com/insomiac.ww" },
+  {
+    icon: <FaStackOverflow />,
+    path: "https://stackoverflow.com/users/21905567/quinton",
+  },
   {
     icon: <FaLinkedinIn />,
     path: "https://www.linkedin.com/in/kagiso-jiyane",

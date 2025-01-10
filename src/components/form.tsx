@@ -151,26 +151,30 @@ const Form = () => {
             control={control}
             defaultValue=""
             render={({ field }) => (
-              <Select
-                onValueChange={(value) => field.onChange(value)}
-                value={field.value}
-              >
-                <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Select a service" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectGroup>
-                    <SelectLabel>Select a service</SelectLabel>
-                    <SelectItem value="Web Development">
-                      Web Development
-                    </SelectItem>
-                    <SelectItem value="Software Development">
-                      Software Development
-                    </SelectItem>
-                    <SelectItem value="Logo Design">Logo Design</SelectItem>
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
+              <>
+                <Select
+                  onValueChange={(value) => field.onChange(value)}
+                  value={field.value}
+                >
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Select a service" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectGroup>
+                      <SelectLabel>Select a service</SelectLabel>
+                      <SelectItem value="Web Development">
+                        Web Development
+                      </SelectItem>
+                      <SelectItem value="Software Development">
+                        Software Development
+                      </SelectItem>
+                      <SelectItem value="Logo Design">Logo Design</SelectItem>
+                    </SelectGroup>
+                  </SelectContent>
+                </Select>
+                {/* Hidden input for service */}
+                <input type="hidden" value={field.value} name="service" />
+              </>
             )}
           />
           {renderError("service")}

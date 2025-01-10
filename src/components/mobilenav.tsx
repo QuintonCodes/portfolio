@@ -27,7 +27,7 @@ const MobileNav = () => {
           site.
         </div>
 
-        <div className="mt-32 mb-40 text-center text-2xl">
+        <div className="mt-32 mb-15 text-center text-2xl">
           <Link href="/" onClick={handleClose}>
             <SheetTitle className="text-4xl font-semibold text-white">
               Quinton<span className="text-accent">.</span>
