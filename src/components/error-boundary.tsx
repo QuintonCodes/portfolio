@@ -26,27 +26,46 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
     console.error("ErrorBoundary caught an error", error, errorInfo);
   }
 
+  resetError = () => {
+    this.setState({ hasError: false, error: null });
+  };
+
+  renderFallback() {
+    const { error } = this.state;
+    const { fallback } = this.props;
+
+    if (fallback) {
+      return fallback;
+    }
+
+    return (
+      <div className="flex flex-col items-center justify-center h-screen text-center">
+        <h1 className="text-4xl font-bold text-red-600">
+          Something went wrong
+        </h1>
+        <p className="mt-4 text-lg text-white/80">{error?.message}</p>
+        <button
+          onClick={this.resetError}
+          className="mt-6 px-6 py-3 bg-red-600 text-black font-medium rounded hover:bg-red-700"
+        >
+          Retry
+        </button>
+        <button
+          onClick={() => location.reload()}
+          className="mt-4 px-6 py-3 bg-gray-600 text-black font-medium rounded hover:bg-gray-700"
+        >
+          Reload Page
+        </button>
+      </div>
+    );
+  }
+
   render() {
-    const { hasError, error } = this.state;
-    const { fallback, children } = this.props;
+    const { hasError } = this.state;
+    const { children } = this.props;
 
     if (hasError) {
-      return (
-        fallback || (
-          <div className="flex flex-col items-center justify-center h-screen text-center">
-            <h1 className="text-4xl font-bold text-red-600">
-              Something went wrong
-            </h1>
-            <p className="mt-4 text-lg text-white/80">{error?.message}</p>
-            <button
-              onClick={() => location.reload()}
-              className="mt-6 px-6 py-3 bg-red-600 text-black font-medium rounded hover:bg-red-700"
-            >
-              Reload Page
-            </button>
-          </div>
-        )
-      );
+      return this.renderFallback();
     }
 
     return children;
