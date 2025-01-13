@@ -1,3 +1,5 @@
+"use client";
+
 import { linksData } from "@/data/info-data";
 import { AlignRight } from "lucide-react";
 import Link from "next/link";
