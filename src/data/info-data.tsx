@@ -224,3 +224,9 @@ export const infoData = [
     description: "327 Frederick Street, Pretoria West",
   },
 ];
+
+export const serviceOptions = [
+  { value: "Web Development", label: "Web Development" },
+  { value: "Software Development", label: "Software Development" },
+  { value: "Logo Design", label: "Logo Design" },
+];
