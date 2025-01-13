@@ -16,6 +16,7 @@ interface SectionHeaderProps {
   other?: boolean;
 }
 
+// Component
 const SectionHeader: React.FC<SectionHeaderProps> = ({
   title,
   description,
