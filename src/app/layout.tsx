@@ -1,8 +1,7 @@
 import ErrorBoundary from "@/components/error-boundary";
 import Header from "@/components/header";
-import PageTransition from "@/components/pagetransition";
 import ReactQueryProvider from "@/components/provider";
-import StairTransition from "@/components/stairtransition";
+import { PageTransition, StairTransition } from "@/components/transitions";
 import type { Metadata } from "next";
 import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";

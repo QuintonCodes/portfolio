@@ -1,10 +1,10 @@
 "use client";
 
-import { Component, ReactNode } from "react";
+import { Component } from "react";
 
 interface ErrorBoundaryProps {
-  children: ReactNode;
-  fallback?: ReactNode;
+  children: React.ReactNode;
+  fallback?: React.ReactNode;
 }
 
 interface ErrorBoundaryState {
@@ -46,13 +46,13 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
         <p className="mt-4 text-lg text-white/80">{error?.message}</p>
         <button
           onClick={this.resetError}
-          className="mt-6 px-6 py-3 bg-red-600 text-black font-medium rounded hover:bg-red-700"
+          className="mt-6 px-6 py-3 bg-red-600 text-black font-medium rounded-lg hover:bg-red-700"
         >
           Retry
         </button>
         <button
           onClick={() => location.reload()}
-          className="mt-4 px-6 py-3 bg-gray-600 text-black font-medium rounded hover:bg-gray-700"
+          className="mt-4 px-6 py-3 bg-gray-600 text-black font-medium rounded-lg hover:bg-gray-700"
         >
           Reload Page
         </button>

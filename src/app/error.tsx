@@ -23,13 +23,13 @@ export default function Error({
       </p>
       <Button
         onClick={reset}
-        className="mt-6 px-6 py-3 bg-red-600 text-white font-medium rounded hover:bg-red-700"
+        className="mt-6 px-6 py-3 bg-red-600 text-white font-medium rounded-lg hover:bg-red-700"
       >
         Retry
       </Button>
       <Link
         href="/"
-        className="mt-6 px-6 py-3 bg-accent text-black font-medium rounded hover:bg-accent-hover"
+        className="mt-6 px-6 py-3 bg-accent text-black font-medium rounded-lg hover:bg-accent-hover"
       >
         Go Back Home
       </Link>

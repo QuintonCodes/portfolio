@@ -1,6 +1,6 @@
 "use client";
 
-import ContactCard from "@/components/contact-card";
+import { ContactCard } from "@/components/cards";
 import Form from "@/components/form";
 import { motion } from "motion/react";
 

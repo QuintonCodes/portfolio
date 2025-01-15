@@ -1,4 +1,3 @@
-import { JSX } from "react";
 import { ScrollArea } from "./ui/scroll-area";
 import {
   Tooltip,
@@ -13,20 +12,20 @@ interface AboutItem {
 }
 
 interface SkillItem {
-  icon: JSX.Element;
+  icon: React.JSX.Element;
   name: string;
 }
 
 interface ExperienceItem {
   company: string;
-  position: string;
   duration: string;
+  position: string;
 }
 
 interface EducationItem {
-  institution: string;
   degree: string;
   duration: string;
+  institution: string;
 }
 
 type ListItem = AboutItem | SkillItem | ExperienceItem | EducationItem;

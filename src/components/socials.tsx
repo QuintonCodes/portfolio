@@ -1,8 +1,7 @@
 import Link from "next/link";
-import { JSX } from "react";
 
 interface SocialsProps {
-  icon: JSX.Element;
+  icon: React.JSX.Element;
   path: string;
 }
 

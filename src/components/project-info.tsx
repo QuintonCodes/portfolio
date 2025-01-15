@@ -1,6 +1,12 @@
 import { projectsData } from "@/data/info-data";
+import Link from "next/link";
 import { BsArrowUpRight, BsGithub } from "react-icons/bs";
-import ProjectLink from "./project-link";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "./ui/tooltip";
 
 const ProjectInfo = ({ project }: { project: (typeof projectsData)[0] }) => (
   <div className="w-full xl:w-[50%] xl:h-[460px] flex flex-col xl:justify-between order-2 xl:order-none">
@@ -43,6 +49,29 @@ const ProjectInfo = ({ project }: { project: (typeof projectsData)[0] }) => (
       </div>
     </div>
   </div>
+);
+
+const ProjectLink = ({
+  href,
+  icon,
+  tooltip,
+}: {
+  href: string;
+  icon: React.JSX.Element;
+  tooltip: string;
+}) => (
+  <Link href={href} target="_blank" rel="noopener noreferrer">
+    <TooltipProvider delayDuration={100}>
+      <Tooltip>
+        <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
+          {icon}
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>{tooltip}</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  </Link>
 );
 
 export default ProjectInfo;

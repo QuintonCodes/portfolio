@@ -1,16 +1,24 @@
+"use client";
+
 import { Download } from "lucide-react";
-import { ReactNode } from "react";
-import Photo from "./photo";
+import { motion } from "motion/react";
+import Image from "next/image";
 import { Button } from "./ui/button";
 
 interface HeroData {
-  title: string;
-  subtitle: string;
   description: string;
   role: string;
+  subtitle: string;
+  title: string;
 }
 
-const Hero = ({ data, children }: { data: HeroData; children: ReactNode }) => {
+const Hero = ({
+  children,
+  data,
+}: {
+  children: React.ReactNode;
+  data: HeroData;
+}) => {
   return (
     <div className="flex flex-col xl:flex-row items-center justify-between xl:pt-2 xl:pb-8">
       {/* Text */}
@@ -41,6 +49,32 @@ const Hero = ({ data, children }: { data: HeroData; children: ReactNode }) => {
       <div className="order-1 xl:order-none mb-8 xl:mb-0">
         <Photo />
       </div>
+    </div>
+  );
+};
+
+const Photo = () => {
+  return (
+    <div className="w-full h-full relative">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{
+          opacity: 1,
+          transition: { delay: 0.2, duration: 0.3, ease: "easeOut" },
+        }}
+        className="w-[298px] h-[298px] xl:w-[490px] xl:h-[490px] relative"
+      >
+        {/* Image */}
+        <Image
+          src="/potrait.png"
+          quality={90}
+          priority
+          fill
+          sizes="(max-width: 768px) 298px, (max-width: 1024px) 490px, 490px"
+          alt="Kagiso Jiyane"
+          className="object-cover"
+        />
+      </motion.div>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 "use client";
 
-import ServiceCard from "@/components/service-card";
+import { ServiceCard } from "@/components/cards";
 import { servicesData } from "@/data/info-data";
 import { motion } from "motion/react";
 

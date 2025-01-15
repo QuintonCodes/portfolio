@@ -10,18 +10,17 @@ import { ReactNode } from "react";
 import List from "./list";
 
 interface SectionHeaderProps {
-  title: string;
   description: string;
   icon: string | StaticImport;
   other?: boolean;
+  title: string;
 }
 
-// Component
 const SectionHeader: React.FC<SectionHeaderProps> = ({
-  title,
   description,
   icon,
   other = false,
+  title,
 }) => {
   return (
     <div>

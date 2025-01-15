@@ -1,4 +1,4 @@
-import { Service } from "@/components/service-card";
+import { Service } from "@/components/cards";
 import {
   FaCss3,
   FaEnvelope,

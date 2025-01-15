@@ -6,7 +6,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Button } from "./ui/button";
-import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "./ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetTitle,
+  SheetTrigger,
+} from "./ui/sheet";
 
 const Header = () => {
   return (
@@ -72,12 +78,12 @@ const MobileNav = () => {
         className="flex flex-col"
         aria-describedby="mobile-nav-description"
       >
-        <div id="mobile-nav-description" className="sr-only">
+        <SheetDescription id="mobile-nav-description" className="sr-only">
           This is the mobile navigation menu. Use the links to navigate the
           site.
-        </div>
+        </SheetDescription>
 
-        <div className="mt-32 mb-15 text-center text-2xl">
+        <div className="mt-32 mb-14 text-center text-2xl">
           <Link href="/" onClick={handleClose}>
             <SheetTitle className="text-4xl font-semibold text-white">
               Quinton<span className="text-accent">.</span>

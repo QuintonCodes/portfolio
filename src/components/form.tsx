@@ -9,12 +9,12 @@ import { Textarea } from "./ui/textarea";
 
 const Form = () => {
   const {
-    register,
-    handleSubmit,
     control,
-    isLoading,
     formStatus,
+    handleSubmit,
+    isLoading,
     onSubmit,
+    register,
     renderError,
   } = useContactForm();
 
@@ -52,12 +52,14 @@ const Form = () => {
             placeholder="Email Address"
             register={register("email")}
             renderError={() => renderError("email")}
+            autoComplete="email"
           />
           <InputField
             type="text"
             placeholder="Phone Number"
             register={register("phone")}
             renderError={() => renderError("phone")}
+            autoComplete="phone"
           />
         </div>
 
