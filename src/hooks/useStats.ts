@@ -40,8 +40,8 @@ const useStats = () => {
       return await fetchTotalCommits(username, repos, token);
     },
     staleTime: 1000 * 60 * 60, // Data is considered fresh for 1 hour
+    refetchInterval: 1000 * 60 * 15,
     enabled: !!token,
-    refetchInterval: 1000 * 60 * 25,
     placeholderData: 0,
   });
 

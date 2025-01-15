@@ -9,9 +9,9 @@ export const fetchTotalCommits = async (
 
   for (const repo of repos) {
     let page = 1;
-    let commitsOnPage;
+    let hasMorePages = true;
 
-    do {
+    while (hasMorePages) {
       const response = await fetch(
         `${GITHUB_API_BASE_URL}/repos/${username}/${repo}/commits?per_page=100&page=${page}`,
         {
@@ -30,10 +30,15 @@ export const fetchTotalCommits = async (
         break;
       }
 
-      commitsOnPage = await response.json();
-      totalCommits += commitsOnPage.length;
-      page++;
-    } while (commitsOnPage.length === 100);
+      const commitsOnPage = await response.json();
+      if (Array.isArray(commitsOnPage)) {
+        totalCommits += commitsOnPage.length;
+        hasMorePages = commitsOnPage.length === 100;
+        page++;
+      } else {
+        hasMorePages = false;
+      }
+    }
   }
 
   return totalCommits;
