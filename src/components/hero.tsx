@@ -66,7 +66,7 @@ const Photo = () => {
       >
         {/* Image */}
         <Image
-          src="/potrait.png"
+          src="/potrait.webp"
           quality={90}
           priority
           fill
