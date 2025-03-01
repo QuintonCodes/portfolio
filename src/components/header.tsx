@@ -1,6 +1,6 @@
 "use client";
 
-import { linksData } from "@/data/info-data";
+import { links } from "@/lib/data";
 import { AlignRight } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -14,10 +14,13 @@ import {
   SheetTrigger,
 } from "./ui/sheet";
 
-const Header = () => {
+export default function Header() {
+  const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <header className="py-8 xl:py-12 text-white">
-      <div className="container mx-auto flex justify-between items-center">
+    <header className="py-8 text-white xl:py-12">
+      <div className="container flex items-center justify-between mx-auto">
         {/* Logo */}
         <Link href="/">
           <h1 className="text-4xl font-semibold">
@@ -25,8 +28,24 @@ const Header = () => {
           </h1>
         </Link>
         {/* Desktop Nav & Hire me Button */}
-        <div className="hidden xl:flex items-center gap-8">
-          <Nav />
+        <div className="items-center hidden gap-8 xl:flex">
+          <nav className="flex gap-8">
+            {links.map((link, index) => {
+              return (
+                <Link
+                  className={`${
+                    link.path === pathname &&
+                    "text-accent border-b-2 border-accent"
+                  } capitalize font-medium hover:text-accent transition-all`}
+                  href={link.path}
+                  key={index}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
+          </nav>
+
           <Link href="/contact">
             <Button>Hire Me</Button>
           </Link>
@@ -34,80 +53,46 @@ const Header = () => {
 
         {/* Mobile Nav */}
         <div className="xl:hidden">
-          <MobileNav />
+          <Sheet onOpenChange={setIsOpen} open={isOpen}>
+            <SheetTrigger className="flex items-center justify-center">
+              <AlignRight className="text-[32px] text-accent" />
+            </SheetTrigger>
+            <SheetContent
+              aria-describedby="mobile-nav-description"
+              className="flex flex-col"
+            >
+              <SheetDescription className="sr-only" id="mobile-nav-description">
+                This is the mobile navigation menu. Use the links to navigate
+                the site.
+              </SheetDescription>
+
+              <div className="mt-32 text-2xl text-center mb-14">
+                <Link href="/" onClick={() => setIsOpen(false)}>
+                  <SheetTitle className="text-4xl font-semibold text-white">
+                    Quinton<span className="text-accent">.</span>
+                  </SheetTitle>
+                </Link>
+              </div>
+
+              <nav className="flex flex-col items-center justify-center gap-8">
+                {links.map((link, index) => (
+                  <Link
+                    className={`${
+                      link.path === pathname &&
+                      "text-accent border-b-2 border-accent"
+                    } text-xl capitalize hover:text-accent transition-all`}
+                    href={link.path}
+                    key={index}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {link.name}
+                  </Link>
+                ))}
+              </nav>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
     </header>
   );
-};
-
-const Nav = () => {
-  const pathname = usePathname();
-
-  return (
-    <nav className="flex gap-8">
-      {linksData.map((link, index) => {
-        return (
-          <Link
-            href={link.path}
-            key={index}
-            className={`${
-              link.path === pathname && "text-accent border-b-2 border-accent"
-            } capitalize font-medium hover:text-accent transition-all`}
-          >
-            {link.name}
-          </Link>
-        );
-      })}
-    </nav>
-  );
-};
-
-const MobileNav = () => {
-  const pathname = usePathname();
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleClose = () => setIsOpen(false);
-
-  return (
-    <Sheet open={isOpen} onOpenChange={setIsOpen}>
-      <SheetTrigger className="flex justify-center items-center">
-        <AlignRight className="text-[32px] text-accent" />
-      </SheetTrigger>
-      <SheetContent
-        className="flex flex-col"
-        aria-describedby="mobile-nav-description"
-      >
-        <SheetDescription id="mobile-nav-description" className="sr-only">
-          This is the mobile navigation menu. Use the links to navigate the
-          site.
-        </SheetDescription>
-
-        <div className="mt-32 mb-14 text-center text-2xl">
-          <Link href="/" onClick={handleClose}>
-            <SheetTitle className="text-4xl font-semibold text-white">
-              Quinton<span className="text-accent">.</span>
-            </SheetTitle>
-          </Link>
-        </div>
-
-        <nav className="flex flex-col justify-center items-center gap-8">
-          {linksData.map((link, index) => (
-            <Link
-              href={link.path}
-              key={index}
-              onClick={handleClose}
-              className={`${
-                link.path === pathname && "text-accent border-b-2 border-accent"
-              } text-xl capitalize hover:text-accent transition-all`}
-            >
-              {link.name}
-            </Link>
-          ))}
-        </nav>
-      </SheetContent>
-    </Sheet>
-  );
-};
-
-export default Header;
+}

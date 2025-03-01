@@ -3,7 +3,9 @@
 import { AnimatePresence, motion } from "motion/react";
 import { usePathname } from "next/navigation";
 
-const Stairs = () => {
+export function StairTransition() {
+  const pathname = usePathname();
+
   const stairAnimation = {
     initial: {
       top: "0%",
@@ -22,66 +24,55 @@ const Stairs = () => {
   };
 
   return (
-    <>
-      {/* Rendering the stairs */}
-      {[...Array(6)].map((_, index) => (
-        <motion.div
-          key={index}
-          variants={stairAnimation}
-          initial="initial"
-          animate="animate"
-          exit="exit"
-          transition={{
-            duration: 0.4,
-            ease: "easeInOut",
-            delay: reverseIndex(index) * 0.1,
-          }}
-          className="h-full w-full bg-white relative"
-        />
-      ))}
-    </>
-  );
-};
-
-export const StairTransition = () => {
-  const pathname = usePathname();
-
-  return (
     <AnimatePresence mode="wait">
       <div key={pathname}>
-        <div className="h-screen w-screen fixed top-0 left-0 right-0 pointer-events-none z-40 flex">
-          <Stairs />
+        <div className="fixed top-0 left-0 right-0 z-40 flex w-screen h-screen pointer-events-none">
+          {[...Array(6)].map((_, index) => (
+            <motion.div
+              animate="animate"
+              className="relative w-full h-full bg-white"
+              exit="exit"
+              initial="initial"
+              key={index}
+              transition={{
+                delay: reverseIndex(index) * 0.1,
+                duration: 0.4,
+                ease: "easeInOut",
+              }}
+              variants={stairAnimation}
+            />
+          ))}
         </div>
 
         <motion.div
-          className="h-screen w-screen fixed bg-primary top-0 pointer-events-none"
-          initial={{ opacity: 1 }}
           animate={{
             opacity: 0,
             transition: { delay: 0.3, duration: 0.4, ease: "easeInOut" },
           }}
+          className="fixed top-0 w-screen h-screen pointer-events-none bg-primary"
+          initial={{ opacity: 1 }}
         />
       </div>
     </AnimatePresence>
   );
-};
+}
 
-export const PageTransition = ({ children }: { children: React.ReactNode }) => {
+export function PageTransition({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
 
   return (
     <AnimatePresence>
       <div key={pathname}>
         <motion.div
-          initial={{ opacity: 1 }}
           animate={{
             opacity: 0,
             transition: { delay: 0.3, duration: 0.4, ease: "easeInOut" },
           }}
-          className="h-screen w-screen fixed bg-primary top-0 pointer-events-none"
+          className="fixed top-0 w-screen h-screen pointer-events-none bg-primary"
+          initial={{ opacity: 1 }}
         />
         {children}
       </div>
     </AnimatePresence>
   );
-};
+}

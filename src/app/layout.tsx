@@ -1,20 +1,20 @@
 import ErrorBoundary from "@/components/error-boundary";
 import Header from "@/components/header";
-import ReactQueryProvider from "@/components/provider";
 import { PageTransition, StairTransition } from "@/components/transitions";
 import type { Metadata } from "next";
 import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import Providers from "./providers";
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
   variable: "--font-jetbrains",
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio",
   description: "Quinton's portfolio website",
+  title: "Portfolio",
 };
 
 export default function RootLayout({
@@ -25,13 +25,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${jetbrainsMono.variable} antialiased`}>
-        <ReactQueryProvider>
+        <Providers>
           <ErrorBoundary>
             <Header />
             <StairTransition />
             <PageTransition>{children}</PageTransition>
           </ErrorBoundary>
-        </ReactQueryProvider>
+        </Providers>
       </body>
     </html>
   );

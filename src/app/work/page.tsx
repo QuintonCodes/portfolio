@@ -2,12 +2,12 @@
 
 import ProjectInfo from "@/components/project-info";
 import ProjectSlider from "@/components/project-slider";
-import { projectsData } from "@/data/info-data";
+import { projectsData } from "@/lib/data";
 import { motion } from "motion/react";
 import { useState } from "react";
 import "swiper/css";
 
-const WorkPage = () => {
+export default function WorkPage() {
   const [project, setProject] = useState(projectsData[0]);
 
   return (
@@ -19,17 +19,15 @@ const WorkPage = () => {
       }}
       className="min-h-[80vh] flex flex-col justify-center py-7 xl:px-0 overflow-hidden"
     >
-      <div className="container max-w-7xl mx-auto px-4">
+      <div className="container px-4 mx-auto max-w-7xl">
         <div className="flex flex-col xl:flex-row xl:gap-[30px]">
           <ProjectInfo project={project} />
           <ProjectSlider
-            projects={projectsData}
             onSlideChange={(project) => setProject(project)}
+            projects={projectsData}
           />
         </div>
       </div>
     </motion.section>
   );
-};
-
-export default WorkPage;
+}

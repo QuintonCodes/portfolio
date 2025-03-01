@@ -1,4 +1,3 @@
-import { Service } from "@/components/cards";
 import {
   FaCss3,
   FaEnvelope,
@@ -17,29 +16,21 @@ import {
 } from "react-icons/fa";
 import { SiNextdotjs, SiTailwindcss, SiTypescript } from "react-icons/si";
 import { TbBrandCSharp } from "react-icons/tb";
+import { ServiceProps, StatsProps } from "./types";
 
-// Home Page
-export const linksData = [
-  {
-    name: "home",
-    path: "/",
-  },
-  {
-    name: "services",
-    path: "/services",
-  },
-  {
-    name: "resume",
-    path: "/resume",
-  },
-  {
-    name: "work",
-    path: "/work",
-  },
-  {
-    name: "contact",
-    path: "/contact",
-  },
+export const initialStats: StatsProps[] = [
+  { num: 3, text: "Years of coding experience" },
+  { num: 0, text: "Projects completed" },
+  { num: 0, text: "Technologies mastered" },
+  { num: 0, text: "Code commits" },
+];
+
+export const links = [
+  { name: "home", path: "/" },
+  { name: "services", path: "/services" },
+  { name: "resume", path: "/resume" },
+  { name: "work", path: "/work" },
+  { name: "contact", path: "/contact" },
 ];
 
 export const heroData = {
@@ -50,21 +41,17 @@ export const heroData = {
   role: "Junior Software Engineer",
 };
 
-export const socialsData = [
+export const socials = [
   { icon: <FaGithub />, path: "https://github.com/QuintonCodes" },
   {
     icon: <FaStackOverflow />,
     path: "https://stackoverflow.com/users/21905567/quinton",
   },
-  {
-    icon: <FaLinkedinIn />,
-    path: "https://www.linkedin.com/in/kagiso-jiyane",
-  },
+  { icon: <FaLinkedinIn />, path: "https://www.linkedin.com/in/kagiso-jiyane" },
   { icon: <FaTwitter />, path: "https://x.com/quinton_dev" },
 ];
 
-// Resume Page
-export const skillsData = {
+export const skills = {
   title: "My skills",
   description: "An overview of my best strengths",
   skillList: [
@@ -82,7 +69,7 @@ export const skillsData = {
   ],
 };
 
-export const experienceData = [
+export const experience = [
   {
     company: "San Carlo",
     position: "Private Tutor",
@@ -90,7 +77,7 @@ export const experienceData = [
   },
 ];
 
-export const educationData = [
+export const education = [
   {
     institution: "Eduvos",
     degree: "Bachelor's Degree in IT (Software Engineering)",
@@ -117,8 +104,7 @@ export const aboutData = {
   ],
 };
 
-// Services Page
-export const servicesData: Service[] = [
+export const services: ServiceProps[] = [
   {
     num: "01",
     title: "Web Development",
@@ -136,7 +122,6 @@ export const servicesData: Service[] = [
   },
 ];
 
-// Work Page
 export const projectsData = [
   {
     num: "01",
@@ -145,18 +130,10 @@ export const projectsData = [
     description:
       "E-Commerce clothing store website for a street brand named KickFlip",
     stack: [
-      {
-        name: "React",
-      },
-      {
-        name: "TypeScript",
-      },
-      {
-        name: "Tailwind.css",
-      },
-      {
-        name: "Node.js",
-      },
+      { name: "React" },
+      { name: "TypeScript" },
+      { name: "Tailwind.css" },
+      { name: "Node.js" },
     ],
     image: "/work/thumb1.png",
     live: "",
@@ -169,15 +146,9 @@ export const projectsData = [
     description:
       "A website using spotify's APIs to provide users with customized music",
     stack: [
-      {
-        name: "Next.js",
-      },
-      {
-        name: "Tailwind.css",
-      },
-      {
-        name: "TypeScript",
-      },
+      { name: "Next.js" },
+      { name: "Tailwind.css" },
+      { name: "TypeScript" },
     ],
     image: "/work/thumb2.png",
     live: "",
@@ -188,17 +159,7 @@ export const projectsData = [
     category: "backend",
     title: "asp.net core api",
     description: "An API created using C# for the spotify API website",
-    stack: [
-      {
-        name: "C#",
-      },
-      {
-        name: "ASP.NET Core",
-      },
-      {
-        name: "SQL",
-      },
-    ],
+    stack: [{ name: "C#" }, { name: "ASP.NET Core" }, { name: "SQL" }],
     image: "/work/thumb3.png",
     live: "",
     github:
@@ -206,13 +167,8 @@ export const projectsData = [
   },
 ];
 
-// Contact Page
-export const infoData = [
-  {
-    icon: <FaPhoneAlt />,
-    title: "Phone",
-    description: "(+27) 69 787 4817",
-  },
+export const contactData = [
+  { icon: <FaPhoneAlt />, title: "Phone", description: "(+27) 69 787 4817" },
   {
     icon: <FaEnvelope />,
     title: "Email",
@@ -223,10 +179,4 @@ export const infoData = [
     title: "Address",
     description: "327 Frederick Street, Pretoria West",
   },
-];
-
-export const serviceOptions = [
-  { value: "Web Development", label: "Web Development" },
-  { value: "Software Development", label: "Software Development" },
-  { value: "Logo Design", label: "Logo Design" },
 ];

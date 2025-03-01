@@ -1,75 +1,43 @@
 "use client";
 
 import { Component } from "react";
+import { toast } from "react-toastify";
+import ErrorPage from "./error-page";
 
 interface ErrorBoundaryProps {
   children: React.ReactNode;
-  fallback?: React.ReactNode;
 }
 
 interface ErrorBoundaryState {
-  hasError: boolean;
   error: Error | null;
+  hasError: boolean;
 }
 
-class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
+export default class ErrorBoundary extends Component<
+  ErrorBoundaryProps,
+  ErrorBoundaryState
+> {
   constructor(props: ErrorBoundaryProps) {
     super(props);
-    this.state = { hasError: false, error: null };
+    this.state = { error: null, hasError: false };
   }
 
   static getDerivedStateFromError(error: Error) {
-    return { hasError: true, error };
+    return { error, hasError: true };
   }
 
-  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
-    console.error("ErrorBoundary caught an error", error, errorInfo);
+  componentDidCatch(error: Error) {
+    toast.error(`An unexpected error occurred: ${error}`);
   }
 
-  resetError = () => {
-    this.setState({ hasError: false, error: null });
-  };
-
-  renderFallback() {
-    const { error } = this.state;
-    const { fallback } = this.props;
-
-    if (fallback) {
-      return fallback;
-    }
-
-    return (
-      <div className="flex flex-col items-center justify-center h-screen text-center">
-        <h1 className="text-4xl font-bold text-red-600">
-          Something went wrong
-        </h1>
-        <p className="mt-4 text-lg text-white/80">{error?.message}</p>
-        <button
-          onClick={this.resetError}
-          className="mt-6 px-6 py-3 bg-red-600 text-black font-medium rounded-lg hover:bg-red-700"
-        >
-          Retry
-        </button>
-        <button
-          onClick={() => location.reload()}
-          className="mt-4 px-6 py-3 bg-gray-600 text-black font-medium rounded-lg hover:bg-gray-700"
-        >
-          Reload Page
-        </button>
-      </div>
-    );
-  }
+  resetError = () => this.setState({ error: null, hasError: false });
 
   render() {
-    const { hasError } = this.state;
     const { children } = this.props;
+    const { hasError } = this.state;
 
-    if (hasError) {
-      return this.renderFallback();
-    }
+    if (hasError) return <ErrorPage reset={this.resetError} />;
 
     return children;
   }
 }
-
-export default ErrorBoundary;

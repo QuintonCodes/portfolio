@@ -1,27 +1,27 @@
 "use client";
 
-import { ContactCard } from "@/components/cards";
+import Card from "@/components/cards";
 import Form from "@/components/form";
+import { contactData } from "@/lib/data";
 import { motion } from "motion/react";
 
-const ContactPage = () => {
+export default function ContactPage() {
   return (
     <motion.section
-      initial={{ opacity: 0 }}
       animate={{
         opacity: 1,
         transition: { delay: 2.4, duration: 0.4, ease: "easeIn" },
       }}
       className="py-2"
+      initial={{ opacity: 0 }}
     >
-      <div className="container max-w-7xl mx-auto px-4">
+      <div className="container px-4 mx-auto max-w-7xl">
         <div className="flex flex-col xl:flex-row gap-[30px]">
           <Form />
-          <ContactCard />
+
+          <Card items={contactData} type="contact" />
         </div>
       </div>
     </motion.section>
   );
-};
-
-export default ContactPage;
+}

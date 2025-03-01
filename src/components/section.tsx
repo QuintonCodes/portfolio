@@ -1,9 +1,4 @@
-import {
-  aboutData,
-  educationData,
-  experienceData,
-  skillsData,
-} from "@/data/info-data";
+import { aboutData, education, experience, skills } from "@/lib/data";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import Image from "next/image";
 import { ReactNode } from "react";
@@ -16,45 +11,13 @@ interface SectionHeaderProps {
   title: string;
 }
 
-const SectionHeader: React.FC<SectionHeaderProps> = ({
-  description,
-  icon,
-  other = false,
-  title,
-}) => {
-  return (
-    <div>
-      {other ? (
-        <>
-          <div className="flex flex-col gap-[30px] text-center xl:text-left">
-            <h3 className="text-4xl font-bold">{title}</h3>
-            <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
-              {description}
-            </p>
-          </div>
-        </>
-      ) : (
-        <>
-          <div className="flex items-center">
-            <h3 className="text-4xl font-bold">{title}</h3>
-            <Image
-              src={icon}
-              alt={`${title} Icon`}
-              width={24}
-              height={24}
-              className="ml-3 mt-2 w-6 h-6"
-            />
-          </div>
-          <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
-            {description}
-          </p>
-        </>
-      )}
-    </div>
-  );
-};
-
-const Section = ({ children, alt }: { children: ReactNode; alt: boolean }) => {
+export default function Section({
+  alt,
+  children,
+}: {
+  alt: boolean;
+  children: ReactNode;
+}) {
   return (
     <div
       className={`${
@@ -66,68 +29,102 @@ const Section = ({ children, alt }: { children: ReactNode; alt: boolean }) => {
       {children}
     </div>
   );
-};
+}
 
-const Education = () => {
+function SectionHeader({
+  description,
+  icon,
+  other = false,
+  title,
+}: SectionHeaderProps) {
+  return (
+    <div>
+      {other ? (
+        <div className="flex flex-col gap-[30px] text-center xl:text-left">
+          <h3 className="text-4xl font-bold">{title}</h3>
+          <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
+            {description}
+          </p>
+        </div>
+      ) : (
+        <>
+          <div className="flex items-center">
+            <h3 className="text-4xl font-bold">{title}</h3>
+            <Image
+              alt={`${title} Icon`}
+              className="w-6 h-6 mt-2 ml-3"
+              height={24}
+              src={icon}
+              width={24}
+            />
+          </div>
+          <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
+            {description}
+          </p>
+        </>
+      )}
+    </div>
+  );
+}
+
+function Education() {
   return (
     <>
       <SectionHeader
-        title="My Education"
         description="Overview of my education"
         icon="/resume/cap.svg"
+        title="My Education"
       />
-      <List items={educationData} type="education" />
+      <List items={education} type="education" />
     </>
   );
-};
+}
 
 Section.Education = Education;
 
-const Experience = () => {
+function Experience() {
   return (
     <>
       <SectionHeader
-        title="My Experience"
         description="Overview of my experience"
         icon="/resume/badge.svg"
+        title="My Experience"
       />
-      <List items={experienceData} type="experience" />
+      <List items={experience} type="experience" />
     </>
   );
-};
+}
 
 Section.Experience = Experience;
 
-const Skills = () => {
+function Skills() {
   return (
     <>
       <SectionHeader
-        title="My Skills"
         description="An overview of my best strengths"
         icon=""
         other={true}
+        title="My Skills"
       />
-      <List items={skillsData.skillList} type="skills" />
+      <List items={skills.skillList} type="skills" />
     </>
   );
-};
+}
 
 Section.Skills = Skills;
 
-const About = () => {
+function About() {
   return (
     <>
       <SectionHeader
-        title="About Me"
         description="A full description about myself"
         icon=""
         other={true}
+        title="About Me"
       />
       <List items={aboutData.info} type="about" />
     </>
   );
-};
+}
 
 Section.About = About;
-
-export default Section;

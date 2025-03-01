@@ -4,20 +4,20 @@ import Section from "@/components/section";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { motion } from "motion/react";
 
-const ResumePage = () => {
+export default function ResumePage() {
   return (
     <motion.div
-      initial={{ opacity: 0 }}
       animate={{
         opacity: 1,
         transition: { delay: 2.4, duration: 0.4, ease: "easeIn" },
       }}
       className="min-h-[80vh] flex items-center justify-center py-12 xl:py-0"
+      initial={{ opacity: 0 }}
     >
-      <div className="container max-w-7xl mx-auto px-4">
+      <div className="container px-4 mx-auto max-w-7xl">
         <Tabs
-          defaultValue="experience"
           className="flex flex-col xl:flex-row gap-[60px]"
+          defaultValue="experience"
         >
           <TabsList className="flex flex-col w-full max-w-[380px] mx-auto xl:mx-0 gap-6">
             <TabsTrigger value="experience">Experience</TabsTrigger>
@@ -28,21 +28,21 @@ const ResumePage = () => {
 
           <div className="min-h-[70vh] w-full">
             {/* Experience Section */}
-            <TabsContent value="experience" className="w-full">
+            <TabsContent className="w-full" value="experience">
               <Section alt={false}>
                 <Section.Experience />
               </Section>
             </TabsContent>
 
             {/* Education Section */}
-            <TabsContent value="education" className="w-full">
+            <TabsContent className="w-full" value="education">
               <Section alt={false}>
                 <Section.Education />
               </Section>
             </TabsContent>
 
             {/* Skills Section */}
-            <TabsContent value="skills" className="w-full h-full">
+            <TabsContent className="w-full h-full" value="skills">
               <Section alt={true}>
                 <Section.Skills />
               </Section>
@@ -50,8 +50,8 @@ const ResumePage = () => {
 
             {/* About Section */}
             <TabsContent
-              value="about"
               className="w-full text-center xl:text-left"
+              value="about"
             >
               <Section alt={true}>
                 <Section.About />
@@ -62,6 +62,4 @@ const ResumePage = () => {
       </div>
     </motion.div>
   );
-};
-
-export default ResumePage;
+}

@@ -1,3 +1,10 @@
+import {
+  AboutItem,
+  EducationItem,
+  ExperienceItem,
+  ListProps,
+  SkillItem,
+} from "@/lib/types";
 import { ScrollArea } from "./ui/scroll-area";
 import {
   Tooltip,
@@ -6,44 +13,15 @@ import {
   TooltipTrigger,
 } from "./ui/tooltip";
 
-interface AboutItem {
-  fieldName: string;
-  fieldValue: string;
-}
-
-interface SkillItem {
-  icon: React.JSX.Element;
-  name: string;
-}
-
-interface ExperienceItem {
-  company: string;
-  duration: string;
-  position: string;
-}
-
-interface EducationItem {
-  degree: string;
-  duration: string;
-  institution: string;
-}
-
-type ListItem = AboutItem | SkillItem | ExperienceItem | EducationItem;
-
-interface ListProps {
-  items: ListItem[];
-  type: "about" | "skills" | "experience" | "education";
-}
-
-const List: React.FC<ListProps> = ({ items, type }) => {
+export default function List({ items, type }: ListProps) {
   switch (type) {
     case "about":
       return (
-        <ul className="grid grid-cols-1 xl:grid-cols-2 gap-y-6 w-full mx-auto xl:mx-0">
+        <ul className="grid w-full grid-cols-1 mx-auto xl:grid-cols-2 gap-y-6 xl:mx-0">
           {(items as AboutItem[]).map((item, index) => (
             <li
               key={index}
-              className="flex items-center justify-center xl:justify-start gap-4"
+              className="flex items-center justify-center gap-4 xl:justify-start"
             >
               <span className="text-white/60">{item.fieldName}</span>
               <span className="text-lg">{item.fieldValue}</span>
@@ -59,7 +37,7 @@ const List: React.FC<ListProps> = ({ items, type }) => {
               <TooltipProvider delayDuration={100}>
                 <Tooltip>
                   <TooltipTrigger className="w-full h-[125px] bg-[#232329] rounded-xl flex justify-center items-center group">
-                    <div className="text-6xl group-hover:text-accent transition-all duration-300">
+                    <div className="text-6xl transition-all duration-300 group-hover:text-accent">
                       {skill.icon}
                     </div>
                   </TooltipTrigger>
@@ -121,6 +99,4 @@ const List: React.FC<ListProps> = ({ items, type }) => {
     default:
       return null;
   }
-};
-
-export default List;
+}

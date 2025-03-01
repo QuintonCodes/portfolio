@@ -1,4 +1,4 @@
-import { FormData } from "@/hooks/useContactForm";
+import { ContactFormData, ServiceProps } from "@/lib/types";
 import { InputHTMLAttributes, JSX } from "react";
 import { Control, Controller, UseFormRegister } from "react-hook-form";
 import { Input } from "./ui/input";
@@ -14,52 +14,52 @@ import {
 
 interface InputFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   placeholder: string;
-  register: ReturnType<UseFormRegister<FormData>>;
+  register: ReturnType<UseFormRegister<ContactFormData>>;
   renderError?: (field: string) => JSX.Element | null;
   type: string;
 }
 
-export const InputField = ({
+export function InputField({
   placeholder,
   register,
   renderError,
   type,
   ...props
-}: InputFieldProps) => {
+}: InputFieldProps) {
   return (
     <div>
-      <Input type={type} placeholder={placeholder} {...register} {...props} />
+      <Input placeholder={placeholder} type={type} {...props} {...register} />
       {renderError && renderError(register.name)}
     </div>
   );
-};
+}
 
 interface SelectFieldProps {
-  control?: Control<FormData>;
-  name: keyof FormData;
-  options: { value: string; label: string }[];
+  control?: Control<ContactFormData>;
+  name: keyof ContactFormData;
+  options: ServiceProps[];
   renderError?: (field: string) => JSX.Element | null;
 }
 
-export const SelectField = ({
+export function SelectField({
   control,
   name,
   options,
   renderError,
-}: SelectFieldProps) => {
+}: SelectFieldProps) {
   return (
     <div>
       <Controller
-        name={name}
         control={control}
         defaultValue=""
+        name={name}
         render={({ field }) => (
           <>
             <Select
               aria-label="Select a service"
+              name={field.name}
               onValueChange={field.onChange}
               value={field.value}
-              name={field.name}
             >
               <SelectTrigger className="w-full">
                 <SelectValue placeholder="Select a service" />
@@ -67,19 +67,20 @@ export const SelectField = ({
               <SelectContent>
                 <SelectGroup>
                   <SelectLabel>Select a service</SelectLabel>
-                  {options.map((option) => (
-                    <SelectItem key={option.value} value={option.value}>
-                      {option.label}
+                  {options.map((option, index) => (
+                    <SelectItem key={index} value={option.title}>
+                      {option.title}
                     </SelectItem>
                   ))}
                 </SelectGroup>
               </SelectContent>
             </Select>
-            <input type="hidden" value={field.value} name={name} />
+
+            <input name={name} type="hidden" value={field.value} />
           </>
         )}
       />
       {renderError && renderError(name)}
     </div>
   );
-};
+}

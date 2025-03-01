@@ -1,5 +1,6 @@
 "use client";
-import { projectsData } from "@/data/info-data";
+
+import { projectsData } from "@/lib/data";
 import Image from "next/image";
 import { useState } from "react";
 import { PiCaretLeftBold, PiCaretRightBold } from "react-icons/pi";
@@ -7,38 +8,38 @@ import SwiperCore from "swiper";
 import "swiper/css";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-const ProjectSlider = ({
+export default function ProjectSlider({
   onSlideChange,
   projects,
 }: {
   onSlideChange: (project: (typeof projectsData)[0]) => void;
   projects: typeof projectsData;
-}) => {
+}) {
   const [swiperInstance, setSwiperInstance] = useState<SwiperCore | null>(null);
 
   return (
     <div className="w-full xl:w-[50%]">
       <Swiper
-        spaceBetween={30}
-        slidesPerView={1}
         className="xl:h-[520px] mb-12"
         onSlideChange={(swiper) => {
           const currentIndex = swiper.activeIndex;
           onSlideChange(projects[currentIndex]);
         }}
         onSwiper={(swiper) => setSwiperInstance(swiper)}
+        slidesPerView={1}
+        spaceBetween={30}
       >
         {projects.map((project, index) => (
           <SwiperSlide key={index} className="w-full">
             <div className="h-[460px] relative group flex justify-center items-center bg-pink-50/20">
-              <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10"></div>
+              <div className="absolute top-0 bottom-0 z-10 w-full h-full bg-black/10"></div>
               <div className="relative w-full h-full">
                 <Image
-                  src={project.image}
-                  quality={100}
-                  fill
-                  className="object-contain"
                   alt={`Project ${index}`}
+                  className="object-contain"
+                  fill
+                  quality={100}
+                  src={project.image}
                 />
               </div>
             </div>
@@ -62,6 +63,4 @@ const ProjectSlider = ({
       </Swiper>
     </div>
   );
-};
-
-export default ProjectSlider;
+}
