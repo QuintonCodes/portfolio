@@ -18,6 +18,7 @@ type Contributor = {
   contributions: number;
 };
 
+// function
 async function fetchUserRepos(username: string): Promise<string[]> {
   const response = await axios.get(
     `https://api.github.com/users/${username}/repos?per_page=100`,
