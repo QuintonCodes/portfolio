@@ -34,7 +34,7 @@ Ensure you have [Node.js](https://nodejs.org/) installed on your system.
 1. Clone the repository:
 
 ```bash
-git clone [https://github.com/QuintonCodes/portfolio.git](https://github.com/QuintonCodes/portfolio.git)
+git clone https://github.com/QuintonCodes/portfolio.git
 cd portfolio
 ```
 
