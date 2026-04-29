@@ -7,7 +7,7 @@ import {
 
 export const details = {
   title: "Hello I'm",
-  role: "BSc. IT Software Engineering Graduate",
+  role: "Aspiring Software Developer & IT Graduate",
   name: "Kagiso Jiyane",
   phone: "+27697874817",
   location: "Pretoria, Gauteng",
@@ -100,14 +100,15 @@ export const skills = {
     "GitHub",
     "GitHub Actions",
     "Vite",
-    "MetaMask",
     "Postman",
-    "PostgreSQL (Neon)",
+    "PostgreSQL",
     "Jest",
     "Figma",
     "CI/CD",
-    "Agile",
-    "Blockchain APIs",
+    "Agile Methodology",
+    "MetaMask",
+    "Solidity",
+    "AWS Cloud",
   ],
 };
 
@@ -124,31 +125,25 @@ export const projects: Project[] = [
     title: "EduLite - Mobile LMS",
     description:
       "Full-stack mobile LMS engineered for collaborative studying and resource sharing. Features a scalable Next.js backend, robust data management with Prisma, and Jest unit testing for reliability.",
-    stack: [
-      "React Native (Expo)",
-      "Next.js",
-      "Prisma",
-      "PostgreSQL (Neon)",
-      "Jest",
-    ],
+    stack: ["React Native (Expo)", "Next.js", "Prisma", "PostgreSQL", "Jest"],
     gitHub: "https://github.com/QuintonCodes/edulite",
     live: "",
   },
   {
-    title: "SwopMarket Website",
+    title: "SwopMarket - E-Commerce Website",
     description:
-      "A full-featured online store with shopping cart, payment processing, and admin dashboard i built for my 3rd year project.",
+      "A full-featured online marketplace with shopping cart, payment processing, and admin dashboard for peer-to-peer interaction between buyers & sellers, which aims at reducing communication overhead.",
     stack: ["Next.js", "PostgreSQL", "Prisma", "TailwindCSS"],
     gitHub: "https://github.com/QuintonCodes/my-projects/tree/main/swop-market",
     live: "https://swop-market.vercel.app",
   },
   {
-    title: "Chordify - Spotify Music Manager",
+    title: "TrustBlock - Web3 Escrow Platform",
     description:
-      "A modern UI overhaul of a music streaming platform, implementing a custom 'Daily Artist' algorithm to boost playlist diversity and improve album recommendation logic.",
-    stack: ["Next.js", "PostgreSQL", "TailwindCSS"],
-    gitHub: "https://github.com/QuintonCodes/My-Projects/tree/main/chordify",
-    live: "",
+      "A decentralized, zero-trust financial utility designed for independent digital workers and their clients. The platform bypasses traditional freelance marketplaces by providing a secure, borderless escrow protocol.",
+    stack: ["Next.js", "PostgreSQL", "TailwindCSS", "MetaMask", "Solidity"],
+    gitHub: "https://github.com/QuintonCodes/trust-block",
+    live: "https://trust-block-ashen.vercel.app/",
   },
 ];
 
@@ -168,7 +163,7 @@ export const experience: Experience[] = [
     duration: "Oct 2025 - Nov 2025",
     description:
       "Refactored legacy frontend components using React (Vite) and Tailwind CSS, improving page load performance scores by 25%. Collaborated with the design team to implement pixel-perfect, responsive UI components strictly adhering to Figma specifications",
-    technologies: ["React (Vite)", "Tailwind CSS"],
+    technologies: ["React (Vite)", "Tailwind CSS", "CI/CD"],
     links: [
       {
         name: "Caledon Code",
@@ -196,7 +191,7 @@ export const experience: Experience[] = [
       },
       {
         name: "Takalani Lubrications",
-        href: "https://takalanilubesupplier.co.za",
+        href: "https://tk-lubricants.vercel.app",
       },
     ],
   },
