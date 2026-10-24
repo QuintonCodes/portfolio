@@ -1,57 +1,36 @@
-# Kagiso's Personal Portfolio
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-Welcome to the repository for my personal portfolio website! This project serves as a central hub to showcase my skills, professional experience, and the software development projects I have built.
+## Getting Started
 
-## ✨ Features
-
-- **Modern UI/UX:** Built with sleek, accessible components and smooth page transitions.
-- **Dynamic Theming:** Full Light/Dark mode support seamlessly integrated with system preferences.
-- **Live GitHub Stats:** Fetches and displays my real-time GitHub commit activity and repository data directly from the GitHub API.
-- **Responsive Design:** Fully optimized for desktop, tablet, and mobile viewing.
-
-## 🛠️ Tech Stack
-
-This project is built with modern web technologies:
-
-- **Framework:** [React 19](https://react.dev/) with [TypeScript](https://www.typescriptlang.org/)
-- **Build Tool:** [Vite](https://vitejs.dev/)
-- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
-- **UI Components:** [shadcn/ui](https://ui.shadcn.com/) (Radix UI)
-- **Animations:** [Framer Motion](https://motion.dev/)
-- **Data Fetching:** [TanStack Query](https://tanstack.com/query/latest) & [Axios](https://axios-http.com/)
-- **Icons:** [Lucide React](https://lucide.dev/) & [React Icons](https://react-icons.github.io/react-icons/)
-
-## 🚀 Getting Started
-
-To run this project locally on your machine, follow these steps:
-
-### Prerequisites
-
-Ensure you have [Node.js](https://nodejs.org/) installed on your system.
-
-### Installation
-
-1. Clone the repository:
-
-```bash
-git clone https://github.com/QuintonCodes/portfolio.git
-cd portfolio
-```
-
-2. Install the dependencies:
-
-```bash
-npm install
-```
-
-3. Start the development server:
+First, run the development server:
 
 ```bash
 npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-4. Open your browser and navigate to http://localhost:5173 (or the port provided in your terminal).
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## 🤝 Contribution
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This is a personal portfolio, but feedback, suggestions, and issue reports regarding the code or design are always welcome! Feel free to open an issue or submit a pull request.
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

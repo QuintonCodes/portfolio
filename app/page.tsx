@@ -1,3 +1,5 @@
+"use client";
+
 import { Download } from "lucide-react";
 import { motion } from "motion/react";
 
@@ -14,7 +16,7 @@ import { Button } from "@/components/ui/button";
 import VerticalNav from "@/components/vertical-nav";
 import { details, education, experience, projects, skills } from "@/lib/data";
 
-export default function App() {
+export default function Home() {
   return (
     <main className="relative">
       <div className="fixed z-50 top-4 left-4">
